@@ -545,6 +545,8 @@ html{
 }
 .contacto .fila{
     display: flex;
+    justify-content: center;
+    width: 100%;
 }
 .contacto .col{
     width: 50%;
@@ -715,5 +717,34 @@ footer .arriba{
     }
     .contacto .fila .col{
         width: 100%;
+    }
+}
+
+.contacto .fila {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.contacto .col.formulario-contacto {
+    width: 50%;
+    padding: 10px;
+}
+
+.contacto .col input, .contacto .col textarea {
+    display: block;
+    width: 100%;
+    padding: 18px;
+    border: none;
+    margin-bottom: 20px;
+    background-color: #252A2E;
+    color: #fff;
+    font-size: 18px;
+}
+
+/* Para hacer el formulario responsive */
+@media screen and (max-width: 768px) {
+    .contacto .col.formulario-contacto {
+        width: 90%;
     }
 }
