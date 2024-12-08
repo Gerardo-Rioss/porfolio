@@ -86,10 +86,13 @@ html{
     font-family: 'Righteous';
 }
 .inicio .contenido-banner h2{
+    color: #1CB698;
+    margin-top: 20px;
     font-size: 20px;
     font-family: 'Righteous';
 }
 .inicio .contenido-banner h3{
+    margin-top: 5px;
     font-size: 14px;
     font-weight: 300;
 }
@@ -747,4 +750,34 @@ footer .arriba{
     .contacto .col.formulario-contacto {
         width: 90%;
     }
+}
+
+.btn-descargar {
+    cursor: pointer;
+    background-color: transparent;
+    border: 2px solid #fff;
+    width: fit-content;
+    display: block;
+    margin: 20px auto;
+    padding: 10px 22px;
+    font-size: 16px;
+    color: #fff;
+    position: relative;
+    z-index: 10;
+    text-decoration: none;
+}
+
+.btn-descargar .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: #1CB698;
+    z-index: -1;
+    transition: 1s;
+}
+
+.btn-descargar:hover .overlay {
+    width: 100%;
 }
