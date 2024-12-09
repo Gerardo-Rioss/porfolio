@@ -488,23 +488,31 @@ html{
     text-align: center;
     padding: 20px 0;
 }
-.portfolio .galeria{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+.portfolio .galeria {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
 }
-.portfolio .galeria .proyecto{
+.portfolio .galeria .proyecto {
     position: relative;
-    max-width: 340px;
-    height: fit-content;
-    margin: 10px;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 10px;
     cursor: pointer;
 }
-.portfolio .galeria .proyecto img{
+.portfolio .galeria .proyecto img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
     display: block;
+    transition: 0.5s;
 }
-.portfolio .galeria .proyecto .overlay{
+.portfolio .galeria .proyecto .overlay {
     position: absolute;
     top: 0;
     width: 100%;
@@ -515,19 +523,25 @@ html{
     flex-direction: column;
     justify-content: center;
     transition: 1s;
-    font-size: 18px;
-    letter-spacing: 3px;
     opacity: 0;
 }
-.portfolio .galeria .proyecto .overlay h3{
+.portfolio .galeria .proyecto .overlay h3 {
+    font-size: 20px;
+    font-weight: bold;
     margin-bottom: 20px;
     transition: 1s;
+    padding: 0 10px;
 }
-.portfolio .galeria .proyecto .overlay:hover{
+.portfolio .galeria .proyecto .overlay p {
+    font-size: 15px;
+    padding: 0 20px;
+    line-height: 1.5;
+}
+.portfolio .galeria .proyecto:hover .overlay {
     opacity: 1;
 }
-.portfolio .galeria .proyecto .overlay:hover h3{
-    margin-bottom: 0px;
+.portfolio .galeria .proyecto:hover .overlay h3 {
+    margin-bottom: 15px;
 }
 /* SECCION CONTACTO */
 .contacto{
@@ -705,16 +719,14 @@ footer .arriba{
         margin-left: 20px;
     }
 
-    .portfolio .galeria{
-        display: block;
-        width: 100%;
+    .portfolio .galeria {
+        grid-template-columns: 1fr;
     }
-    .portfolio .galeria .proyecto{
-        max-width: 100%;
+    
+    .portfolio .galeria .proyecto {
+        height: 250px;
     }
-    .portfolio .galeria .proyecto img{
-        width: 100%;
-    }
+
     .contacto .fila{
         display: block;
     }
