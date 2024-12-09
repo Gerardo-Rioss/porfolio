@@ -142,6 +142,11 @@ html{
 .sobremi .fila{
     display: flex;
 }
+.sobremi  a{
+    text-decoration: none;
+    color: inherit;
+}
+
 .sobremi .fila .col
 {
     width: 50%;
