@@ -745,6 +745,10 @@ footer .arriba{
     .portfolio .galeria .proyecto {
         height: 250px;
     }
+    .portfolio .galeria .proyecto-ultimo{
+        height: 250px;
+        left: 0;
+    }
 
     .contacto .fila{
         display: block;
