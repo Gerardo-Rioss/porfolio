@@ -761,6 +761,12 @@ footer .arriba{
         height: 250px;
         left: 0;
     }
+    .portfolio .galeria .proyecto .overlay p, .portfolio .galeria .proyecto-ultimo p {
+        font-size: 15px;
+    }
+    .portfolio .galeria .proyecto .overlay H3, .portfolio .galeria .proyecto-ultimo H3 {
+        font-size: 17px;
+    }
 
     .contacto .fila{
         display: block;
