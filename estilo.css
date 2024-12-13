@@ -775,12 +775,13 @@ footer .arriba {
   }
     .portfolio .galeria .proyecto .overlay p,
     .portfolio .galeria .proyecto-ultimo p {
-      font-size: 15px;
+      font-size: 14px;
+      
     }
   
     .portfolio .galeria .proyecto .overlay H3,
     .portfolio .galeria .proyecto-ultimo H3 {
-      font-size: 17px;
+      font-size: 16px;
     }
 }
 @media screen and (max-width: 700px) {
@@ -824,11 +825,12 @@ footer .arriba {
   }
   .portfolio .galeria .proyecto .overlay p,
   .portfolio .galeria .proyecto-ultimo p {
-    font-size: 15px;
+    font-size: 12px;
+    line-height: normal;
   }
   .portfolio .galeria .proyecto .overlay H3,
   .portfolio .galeria .proyecto-ultimo H3 {
-    font-size: 17px;
+    font-size: 14px;
   }
 
   .contacto .fila {
