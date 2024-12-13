@@ -39,3 +39,66 @@ function efectoHabilidades(){
 window.onscroll = function(){
     efectoHabilidades();
 } 
+
+// Función para animar las letras de los títulos
+function animarTitulos() {
+    const titulos = document.querySelectorAll('h2');
+    
+    titulos.forEach(titulo => {
+        if (!titulo.classList.contains('procesado')) {
+            // Marcar el título como procesado para no repetir la preparación
+            titulo.classList.add('procesado');
+            
+            // Obtener el texto original
+            const texto = titulo.innerText;
+            // Limpiar el contenido
+            titulo.innerHTML = '';
+            
+            // Crear span para cada letra
+            texto.split('').forEach((letra) => {
+                const span = document.createElement('span');
+                span.textContent = letra;
+                span.className = 'letra';
+                titulo.appendChild(span);
+            });
+        }
+    });
+}
+
+// Función para verificar si un elemento está en el viewport
+function isElementInViewport(el) {
+    const rect = el.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.top <= (window.innerHeight || document.documentElement.clientHeight)
+    );
+}
+
+// Función para manejar la animación al hacer scroll
+function handleScrollAnimation() {
+    const titulos = document.querySelectorAll('h2');
+    
+    titulos.forEach(titulo => {
+        if (isElementInViewport(titulo) && !titulo.classList.contains('animado')) {
+            titulo.classList.add('animado');
+            
+            const letras = titulo.querySelectorAll('.letra');
+            letras.forEach((letra, i) => {
+                setTimeout(() => {
+                    letra.classList.add('mostrar');
+                }, 100 * i);
+            });
+        }
+    });
+}
+
+// Preparar los títulos cuando se carga la página
+document.addEventListener('DOMContentLoaded', () => {
+    animarTitulos();
+    handleScrollAnimation(); // Verificar títulos visibles inicialmente
+});
+
+// Manejar el scroll
+window.addEventListener('scroll', () => {
+    handleScrollAnimation();
+}); 
