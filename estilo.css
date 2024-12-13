@@ -773,6 +773,15 @@ footer .arriba {
     border-bottom: 1px solid #fff;
     padding: 10px 0;
   }
+    .portfolio .galeria .proyecto .overlay p,
+    .portfolio .galeria .proyecto-ultimo p {
+      font-size: 15px;
+    }
+  
+    .portfolio .galeria .proyecto .overlay H3,
+    .portfolio .galeria .proyecto-ultimo H3 {
+      font-size: 17px;
+    }
 }
 @media screen and (max-width: 700px) {
   .sobremi .fila {
@@ -903,7 +912,7 @@ footer .arriba {
     transform: translateY(0);
 }
 
-/* Asegurarnos que los espacios en blanco se muestren correctamente */
-.letra:empty {
-    width: 0.3em;
+.letra.espacio {
+    width: 0.4em; /* Ajusta este valor según necesites más o menos espacio */
+    display: inline-block;
 }
