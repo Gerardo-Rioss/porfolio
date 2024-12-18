@@ -82,9 +82,10 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,51,51,1) 50%, rgba(
 .inicio .contenido-banner img {
   margin-top: 40px;
   /* border: 10px solid #1cb698; */
-  border: 10px solid #12725f;
+  border: 5px solid #12725f;
   display: block;
-  width: 70%;
+  width: 300px;
+  
   margin: auto;
   border-radius: 100%;
 }
