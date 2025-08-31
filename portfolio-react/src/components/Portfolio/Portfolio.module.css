@@ -1,0 +1,234 @@
+.portfolio {
+  padding: 100px 0;
+  background: linear-gradient(135deg, var(--surface-color) 0%, var(--background-color) 100%);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 3rem;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.projectCard {
+  perspective: 1000px;
+  height: 350px;
+  cursor: pointer;
+}
+
+.cardFace {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.projectCard.flipped .cardFace {
+  transform: rotateY(180deg);
+}
+
+.cardFront,
+.cardBack {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px var(--shadow-color);
+  transition: all 0.3s ease;
+}
+
+.cardFront {
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+}
+
+.cardBack {
+  background: var(--gradient-primary);
+  color: white;
+  transform: rotateY(180deg);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow-y: auto;
+}
+
+.cardFront img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.cardFront:hover img {
+  transform: scale(1.05);
+}
+
+.cardFront h3 {
+  padding: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-align: center;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.cardBack h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.cardBack p {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  text-align: justify;
+  margin: 0;
+  flex-grow: 1;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+/* Scrollbar styling for cardBack */
+.cardBack::-webkit-scrollbar {
+  width: 6px;
+}
+
+.cardBack::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.cardBack::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+
+.cardBack::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.cardOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 16px;
+}
+
+.cardFront:hover .cardOverlay,
+.cardBack:hover .cardOverlay {
+  opacity: 1;
+}
+
+.cardOverlay i {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.cardOverlay span {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .portfolio {
+    padding: 80px 0;
+  }
+
+  .sectionTitle {
+    font-size: 2rem;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .projectCard {
+    height: 320px;
+  }
+
+  .cardFront img {
+    height: 180px;
+  }
+
+  .cardBack {
+    padding: 1.25rem;
+  }
+
+  .cardBack h3 {
+    font-size: 1.1rem;
+  }
+
+  .cardBack p {
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 480px) {
+  .sectionTitle {
+    font-size: 1.8rem;
+  }
+
+  .gallery {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .projectCard {
+    height: 300px;
+  }
+
+  .cardFront img {
+    height: 160px;
+  }
+
+  .cardBack {
+    padding: 1rem;
+  }
+
+  .cardBack h3 {
+    font-size: 1rem;
+  }
+
+  .cardBack p {
+    font-size: 0.75rem;
+    line-height: 1.4;
+  }
+}

@@ -1,0 +1,179 @@
+.about {
+  padding: 100px 0;
+  background: linear-gradient(135deg, var(--surface-color) 0%, var(--background-color) 100%);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 3rem;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.description {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.description p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.highlight {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.card {
+  background: var(--surface-color);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px var(--shadow-color);
+  transition: all 0.3s ease;
+  border: 1px solid var(--border-color);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 48px var(--shadow-color);
+}
+
+.card h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+  text-align: center;
+}
+
+.dataList {
+  list-style: none;
+}
+
+.dataList li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.dataList li:last-child {
+  border-bottom: none;
+}
+
+.dataList strong {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.dataList span {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.interests {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.interest {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(79, 172, 254, 0.1));
+  transition: all 0.3s ease;
+}
+
+.interest:hover {
+  transform: translateY(-4px);
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(79, 172, 254, 0.2));
+}
+
+.interest i {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
+.interest span {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-align: center;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .about {
+    padding: 80px 0;
+  }
+
+  .sectionTitle {
+    font-size: 2rem;
+  }
+
+  .description p {
+    font-size: 1rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .interests {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .sectionTitle {
+    font-size: 1.8rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+
+  .interests {
+    grid-template-columns: 1fr;
+  }
+
+  .dataList li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
