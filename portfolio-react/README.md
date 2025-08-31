@@ -197,3 +197,4 @@ Este proyecto está bajo la Licencia MIT.
 ---
 
 Desarrollado con ❤️ usando React y TypeScript
+

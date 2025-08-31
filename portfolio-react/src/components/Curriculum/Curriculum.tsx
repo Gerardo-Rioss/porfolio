@@ -115,3 +115,4 @@ const Curriculum: React.FC = () => {
 };
 
 export default Curriculum;
+

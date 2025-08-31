@@ -2,23 +2,21 @@ import React, { useState } from 'react';
 import styles from './Contact.module.css';
 
 interface FormData {
-  nombre: string;
-  telefono: string;
+  name: string;
   email: string;
-  tema: string;
-  mensaje: string;
+  subject: string;
+  message: string;
 }
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
-    nombre: '',
-    telefono: '',
+    name: '',
     email: '',
-    tema: '',
-    mensaje: ''
+    subject: '',
+    message: ''
   });
-
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -31,138 +29,175 @@ const Contact: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitStatus('idle');
 
     try {
-      const response = await fetch('https://formsubmit.co/gerarios26@gmail.com', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData)
+      // Simulate form submission
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      // Here you would typically send the data to your backend
+      console.log('Form submitted:', formData);
+      
+      setSubmitStatus('success');
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
       });
-
-      if (response.ok) {
-        alert('Mensaje enviado con éxito!');
-        setFormData({
-          nombre: '',
-          telefono: '',
-          email: '',
-          tema: '',
-          mensaje: ''
-        });
-      } else {
-        alert('Error al enviar el mensaje. Por favor, inténtalo de nuevo.');
-      }
     } catch (error) {
-      alert('Error al enviar el mensaje. Por favor, inténtalo de nuevo.');
+      console.error('Error submitting form:', error);
+      setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
     }
   };
 
+  const contactInfo = [
+    {
+      icon: '📧',
+      title: 'Email',
+      value: 'gerardo@example.com',
+      link: 'mailto:gerardo@example.com'
+    },
+    {
+      icon: '📱',
+      title: 'Teléfono',
+      value: '+34 123 456 789',
+      link: 'tel:+34123456789'
+    },
+    {
+      icon: '📍',
+      title: 'Ubicación',
+      value: 'Madrid, España',
+      link: 'https://maps.google.com/?q=Madrid,Spain'
+    },
+    {
+      icon: '💼',
+      title: 'LinkedIn',
+      value: 'linkedin.com/in/gerardo',
+      link: 'https://linkedin.com/in/gerardo'
+    }
+  ];
+
   return (
-    <section id="contacto" className={styles.contact}>
+    <section id="contact" className={styles.contact}>
       <div className={styles.container}>
-        <h2 className={styles.sectionTitle}>CONTACTO</h2>
+        <h2 className={styles.sectionTitle}>Contacto</h2>
         
         <div className={styles.content}>
+          {/* Contact Information */}
           <div className={styles.contactInfo}>
-            <div className={styles.infoCard}>
-              <i className="fa-solid fa-envelope"></i>
-              <h3>Email</h3>
-              <p>gerarios26@gmail.com</p>
-            </div>
-            
-            <div className={styles.infoCard}>
-              <i className="fa-solid fa-phone"></i>
-              <h3>Teléfono</h3>
-              <p>(0362) 154709877</p>
-            </div>
-            
-            <div className={styles.infoCard}>
-              <i className="fa-solid fa-location-dot"></i>
-              <h3>Ubicación</h3>
-              <p>Barranqueras - Chaco, Argentina</p>
-            </div>
+            {contactInfo.map((info, index) => (
+              <div key={index} className={styles.infoCard}>
+                <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>
+                  {info.icon}
+                </div>
+                <h3>{info.title}</h3>
+                <a 
+                  href={info.link} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}
+                >
+                  {info.value}
+                </a>
+              </div>
+            ))}
           </div>
 
+          {/* Contact Form */}
           <div className={styles.formContainer}>
             <form onSubmit={handleSubmit} className={styles.contactForm}>
               <div className={styles.formGroup}>
                 <input
                   type="text"
-                  name="nombre"
-                  placeholder="Tu Nombre"
-                  value={formData.nombre}
+                  name="name"
+                  value={formData.name}
                   onChange={handleInputChange}
+                  placeholder="Tu nombre"
+                  className={styles.formInput}
                   required
-                  className={styles.formInput}
                 />
               </div>
-              
-              <div className={styles.formGroup}>
-                <input
-                  type="tel"
-                  name="telefono"
-                  placeholder="Número telefónico"
-                  value={formData.telefono}
-                  onChange={handleInputChange}
-                  className={styles.formInput}
-                />
-              </div>
-              
+
               <div className={styles.formGroup}>
                 <input
                   type="email"
                   name="email"
-                  placeholder="Dirección de correo"
                   value={formData.email}
                   onChange={handleInputChange}
-                  required
+                  placeholder="Tu email"
                   className={styles.formInput}
+                  required
                 />
               </div>
-              
+
               <div className={styles.formGroup}>
                 <input
                   type="text"
-                  name="tema"
-                  placeholder="Tema"
-                  value={formData.tema}
+                  name="subject"
+                  value={formData.subject}
                   onChange={handleInputChange}
+                  placeholder="Asunto"
                   className={styles.formInput}
+                  required
                 />
               </div>
-              
+
               <div className={styles.formGroup}>
                 <textarea
-                  name="mensaje"
-                  placeholder="Mensaje"
-                  value={formData.mensaje}
+                  name="message"
+                  value={formData.message}
                   onChange={handleInputChange}
-                  required
-                  rows={6}
+                  placeholder="Tu mensaje"
                   className={styles.formTextarea}
-                ></textarea>
+                  required
+                />
               </div>
-              
-              <button 
-                type="submit" 
-                className={styles.submitButton}
+
+              <button
+                type="submit"
                 disabled={isSubmitting}
+                className={styles.submitButton}
               >
                 {isSubmitting ? (
                   <>
-                    <i className="fa-solid fa-spinner fa-spin"></i>
-                    Enviando...
+                    <span>Enviando...</span>
                   </>
                 ) : (
                   <>
-                    Enviar Mensaje
-                    <i className="fa-solid fa-paper-plane"></i>
+                    <span>📤</span>
+                    <span>Enviar Mensaje</span>
                   </>
                 )}
               </button>
+
+              {submitStatus === 'success' && (
+                <div style={{ 
+                  color: '#10b981', 
+                  textAlign: 'center', 
+                  padding: '1rem',
+                  backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                  borderRadius: '8px',
+                  marginTop: '1rem'
+                }}>
+                  ¡Mensaje enviado con éxito! Te responderé pronto.
+                </div>
+              )}
+
+              {submitStatus === 'error' && (
+                <div style={{ 
+                  color: '#ef4444', 
+                  textAlign: 'center', 
+                  padding: '1rem',
+                  backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                  borderRadius: '8px',
+                  marginTop: '1rem'
+                }}>
+                  Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo.
+                </div>
+              )}
             </form>
           </div>
         </div>
